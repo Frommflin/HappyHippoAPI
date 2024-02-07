@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "name": "happy-hippo-api",
+  "private": true,
+  "scripts": {
+    "build": "dotnet build",
+    "start": "dotnet run"
+  }
+}
