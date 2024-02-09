@@ -5,5 +5,10 @@
   "scripts": {
     "build": "dotnet build",
     "start": "dotnet run"
+  },
+  "dependencies": {
+    {
+      "dotnet":  "8.0.101"
+    }
   }
 }
