@@ -29,7 +29,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 builder.Services.AddCors(options => options.AddPolicy(name: "HappyHippo", policy =>
 {
-   policy.WithOrigins("https://happyhippo-jt5w.onrender.com/*").AllowAnyMethod().AllowAnyHeader();
+   policy.WithOrigins("https://happyhippo-jt5w.onrender.com").AllowAnyMethod().AllowAnyHeader();
 }));
 
 var app = builder.Build();
@@ -41,7 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseCors("HappyHippo");
+app.UseCors("HappyHippo");
 
 app.UseHttpsRedirection();
 
