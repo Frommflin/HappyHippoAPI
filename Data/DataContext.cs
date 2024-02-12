@@ -5,10 +5,22 @@ namespace HappyHippoAPI.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        protected readonly IConfiguration Configuration;
 
-        public DbSet<User> Users => Set<User>();
-        public DbSet<Book> Books => Set<Book>();
-        public DbSet<Quote> Quotes => Set<Quote>();
+        public DataContext(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            // connect to mysql with connection string from app settings
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+        }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Quote> Quotes { get; set; }
     }
 }
