@@ -31,7 +31,7 @@ namespace HappyHippoAPI.Controllers
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.Username }, user);
+            return Ok(user);
         }
 
         // POST: HappyHippoUser/login
